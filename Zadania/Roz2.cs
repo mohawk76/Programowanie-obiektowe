@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZadaniaPO.Zadania
 {
@@ -22,6 +18,7 @@ namespace ZadaniaPO.Zadania
                 Console.WriteLine("\tq. Wyjście.");
                 Console.Write("\nWybierz opcję z menu: ");
                 string option = Console.ReadLine();
+                Console.Clear();
                 switch (option)
                 {
                     case "1":
@@ -40,21 +37,20 @@ namespace ZadaniaPO.Zadania
                         exit = true;
                         break;
                 }
+                Console.WriteLine("Wciśnij dowolny przycisk żeby kontynuować.");
+                Console.ReadKey();
             };
         }
 
         static public void zad21()
         {
-            Console.Clear();
             Console.WriteLine("Podaj temperaturę w stopniach celsjusza żeby przeliczyć ją na stopnie Fahrenheita: ");
             float deegres = Input.inputFloat();
             float fahrenheit = 32f + (9f / 5f) * deegres;
             Console.WriteLine("Temperatura w stopniach Fahrenheita wynosi: " + fahrenheit);
-            Console.ReadKey();
         }
         static public void zad22()
         {
-            Console.Clear();
             Console.Write("Podaj współczynnik a: ");
             float a = Input.inputFloat();
             Console.Write("Podaj współczynnik b: ");
@@ -62,26 +58,21 @@ namespace ZadaniaPO.Zadania
             Console.Write("Podaj współczynnik c: ");
             float c = Input.inputFloat();
             Console.WriteLine("Delta wynosi: " + (float)(Math.Pow(b, 2) - 4 * a * c));
-            Console.ReadKey();
         }
         static public void zad23()
         {
-            Console.Clear();
             Console.Write("Podaj swoją wagę w kg: ");
             float weight = Input.inputFloat();
             Console.Write("Podaj swój wzrost w m: ");
             float height = Input.inputFloat();
             Console.WriteLine("Twoje BMI wynosi: " + (float)(weight / Math.Pow(height, 2)));
-            Console.ReadKey();
         }
 
         static public void zad210()
         {
-            Console.Clear();
             int powierzchnia = 100, osoby = 10;
             double gestoscZaludnienia = (float)osoby / powierzchnia;
             Console.WriteLine(gestoscZaludnienia);
-            Console.ReadKey();
         }
     }
 }

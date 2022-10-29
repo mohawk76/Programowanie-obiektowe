@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZadaniaPO.Zadania;
 
 namespace ZadaniaPO
@@ -22,6 +18,7 @@ namespace ZadaniaPO
                 Console.Clear();
                 Console.WriteLine("###\tLista rozdziałów\t###");
                 Console.WriteLine("\t1. Rozdział 2.");
+                Console.WriteLine("\t2. Rozdział 3.");
                 Console.WriteLine("\tq. Wyjście.");
                 Console.Write("\nWybierz opcję z menu: ");
                 string option = Console.ReadLine();
@@ -29,6 +26,9 @@ namespace ZadaniaPO
                 {
                     case "1":
                         Roz2.menu();
+                        break;
+                    case "2":
+                        Roz3.menu();
                         break;
                     case "q":
                         exit = true;

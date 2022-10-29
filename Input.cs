@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZadaniaPO
 {
@@ -35,6 +31,22 @@ namespace ZadaniaPO
                 }
                 string input = Console.ReadLine();
                 validInput = float.TryParse(input, out result);
+            } while (!validInput);
+            return result;
+        }
+
+        public static double inputDouble()
+        {
+            bool validInput = true;
+            double result;
+            do
+            {
+                if (!validInput)
+                {
+                    Console.WriteLine("Wprowadzono błędne dane, proszę wprowadzić liczbę rzeczywistą");
+                }
+                string input = Console.ReadLine();
+                validInput = double.TryParse(input, out result);
             } while (!validInput);
             return result;
         }
