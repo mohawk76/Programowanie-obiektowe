@@ -362,7 +362,7 @@ namespace ZadaniaPO.Zadania
 
         static public void zad312()
         {
-            Console.WriteLine("Wprowadzaj liczby całkowite by je zsumować, aby wyświetlić wynik wprowadź 0:")
+            Console.WriteLine("Wprowadzaj liczby całkowite by je zsumować, aby wyświetlić wynik wprowadź 0:");
             int sum = 0;
             int number = Input.inputInt();
             while (number != 0)
