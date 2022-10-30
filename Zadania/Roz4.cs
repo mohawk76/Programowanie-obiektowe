@@ -127,32 +127,206 @@ namespace ZadaniaPO.Zadania
 
         private static void zad48()
         {
+            string[,] dniTygodnia = new string[7, 3];
 
+            dniTygodnia[0, 0] = "poniedzialek";
+            dniTygodnia[0, 1] = "monday";
+            dniTygodnia[0, 2] = "montag";
+
+            dniTygodnia[1, 0] = "wtorek";
+            dniTygodnia[1, 1] = "tuesday";
+            dniTygodnia[1, 2] = "dienstag";
+
+            dniTygodnia[2, 0] = "środa";
+            dniTygodnia[2, 1] = "wednesday";
+            dniTygodnia[2, 2] = "mittwoch";
+
+            dniTygodnia[3, 0] = "czwartek";
+            dniTygodnia[3, 1] = "thursday";
+            dniTygodnia[3, 2] = "donnerstag";
+
+            dniTygodnia[4, 0] = "piątek";
+            dniTygodnia[4, 1] = "friday";
+            dniTygodnia[4, 2] = "freitag";
+
+            dniTygodnia[5, 0] = "sobota";
+            dniTygodnia[5, 1] = "saturday";
+            dniTygodnia[5, 2] = "samstag";
+
+            dniTygodnia[6, 0] = "niedziela";
+            dniTygodnia[6, 1] = "sunday";
+            dniTygodnia[6, 2] = "sonntag";
+
+            Output.display2DArr(dniTygodnia);
         }
 
         private static void zad47()
         {
+            Random rnd = new Random();
+            int[][] arr1 = new int[2][];
+            int[][] arr2 = new int[2][];
+            for (int i = 0; i < 2; i++)
+            {
+                arr1[i] = new int[3];
+                arr2[i] = new int[3];
+                for (int j = 0; j < 3; j++)
+                {
+                    arr1[i][j] = rnd.Next(1, 10);
+                    arr2[i][j] = rnd.Next(1, 10);
+                }
+            }
+            Console.WriteLine("Zawartość tablicy arr1:");
+            Output.displayJaggedArr(arr1);
+            Console.WriteLine("Zawartość tablicy arr2:");
+            Output.displayJaggedArr(arr2);
 
+            int[][] sum = new int[2][];
+            for (int i = 0; i < 2; i++)
+            {
+                sum[i] = new int[3];
+                for (int j = 0; j < 3; j++)
+                {
+                    sum[i][j] = arr2[i][j] + arr1[i][j];
+                }
+            }
+
+            Console.WriteLine("Wynik zsumowania macierzy arr1 i arr2:");
+            Output.displayJaggedArr(sum);
         }
 
         private static void zad46()
         {
+            Random rnd = new Random();
+            int[][] arr = new int[5][];
+            for (int i = 0; i < 5; i++)
+            {
+                arr[i] = new int[5];
+                for (int j = 0; j < 5; j++)
+                    arr[i][j] = rnd.Next(1, 10);
+            }
+            Output.displayJaggedArr(arr);
 
+            int sum = 0;
+            for (int i = 0, j = 0; j < 5; i++, j++)
+            {
+                sum += arr[i][j];
+            }
+
+            Console.WriteLine($"Suma głównej przekątnej wynosi: {sum}");
         }
 
         private static void zad45()
         {
-
+            int[] arr1 = Enumerable.Range(0, 10).ToArray();
+            int[] arr2 = new int[arr1.Length];
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                arr2[(i + 1) % arr1.Length] = arr1[i];
+            }
+            Console.WriteLine("Zawartość tablicy arr1:");
+            Output.displayArr(arr1);
+            Console.WriteLine("Zawartość skopiowanej tablicy arr2:");
+            Output.displayArr(arr2);
         }
 
         private static void zad44()
         {
+            Random rand = new Random();
+            int[] arr1 = new int[100];
 
+            for (int i = 0; i < 100; i++)
+            {
+                arr1[i] = rand.Next(0, 1000);
+            }
+
+            Func<int, bool> isPrime = (val) =>
+            {
+                if (val < 2) return false;
+                int valSqrt = (int)Math.Sqrt(val);
+                for (int i = 2; i < valSqrt; i++)
+                {
+                    if (val % i == 0)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            };
+
+            Console.WriteLine("Wartości tablicy:\n");
+            Output.displayArr(arr1);
+
+            Console.WriteLine($"Ilość liczb pierwszych w tablicy: {arr1.Count(isPrime)}");
         }
 
         private static void zad43()
         {
+            Console.WriteLine("Wprowadź ile elementów ma zawierać tablica:");
+            int n = Input.inputInt();
+            int[] arr = new int[n];
 
+            if (n <= 0) return;
+            Console.WriteLine("Wprowadź wartości elementów:");
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = Input.inputInt();
+            }
+
+            Func<int[], int> max = (values) =>
+            {
+                if (values.Length == 0) return -1;
+                int idx = 0;
+                for (int i = 1; i < values.Length; i++)
+                {
+                    if (values[i] > values[idx])
+                    {
+                        idx = i;
+                    }
+                }
+                return idx;
+            };
+
+            Func<int[], int> min = (values) =>
+            {
+                if (values.Length == 0) return -1;
+                int idx = 0;
+                for (int i = 1; i < values.Length; i++)
+                {
+                    if (values[i] < values[idx])
+                    {
+                        idx = i;
+                    }
+                }
+                return idx;
+            };
+
+            Func<int[], float> avg = (values) =>
+            {
+                if (values.Length == 0) return 0;
+                return values.Sum() / (float)values.Length;
+            };
+
+            Func<int[], int> countPositive = (values) =>
+            {
+                int counter = 0;
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (values[i] > 0)
+                    {
+                        counter++;
+                    }
+                }
+                return counter;
+            };
+
+            int maxIdx = max(arr);
+            int minIdx = min(arr);
+            float avgVal = avg(arr);
+            int positives = countPositive(arr);
+            Console.WriteLine($"Największy element: [{maxIdx}] => {arr[maxIdx]}");
+            Console.WriteLine($"Najmniejszt element: [{minIdx}] => {arr[minIdx]}");
+            Console.WriteLine($"Średnia wartość: {avgVal}");
+            Console.WriteLine($"Ilość liczb pozytywnych: {positives}");
         }
 
         private static void zad42()
